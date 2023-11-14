@@ -4,7 +4,7 @@ export HOME="${HOME:-/root}"
 
 CONDA_INSTALL_PREFIX=/opt/conda
 CONDA_INSTALLER_VERSION=23.1.0-1
-CONDA_INSTALLER="https://github.com/conda-forge/miniforge/releases/download/${CONDA_INSTALLER_VERSION}/Miniforge3-${CONDA_INSTALLER_VERSION}-Linux-x86_64.sh"
+CONDA_INSTALLER="https://github.com/conda-forge/miniforge/releases/download/${CONDA_INSTALLER_VERSION}/Miniforge3-${CONDA_INSTALLER_VERSION}-Linux-aarch64.sh"
 CONDA_CMD="conda" # some installers install mamba or micromamba
 
 DRY_RUN_OPTION=""
@@ -79,10 +79,10 @@ if [[ "$(uname)" != "Linux" ]]; then
     exit 1
 fi
 
-if [[ "$(uname -mo)" != "x86_64 GNU/Linux" ]]; then
-    echo "::ERROR:: $0 only supports 'x86_64 GNU/Linux' not '$(uname -io)'"
-    exit 1
-fi
+# if [[ "$(uname -mo)" != "x86_64 GNU/Linux" ]]; then
+#     echo "::ERROR:: $0 only supports 'x86_64 GNU/Linux' not '$(uname -io)'"
+#     exit 1
+# fi
 
 if [[ ! -r /etc/os-release ]]; then
     echo "::ERROR:: $0 depends on /etc/os-release for distro-specific setup and it doesn't exist here"
